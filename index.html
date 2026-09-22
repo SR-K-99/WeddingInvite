@@ -1,1253 +1,1417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Arjun & Kavya | Wedding</title>
+<title>Sandeep & Pradeepa | Reception</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <style>
-    :root {
-      --ivory: #f8f3e9;
-      --cream: #efe5d2;
-      --sand: #d9c5a5;
-      --gold: #aa8950;
-      --gold-light: #cdb47d;
-      --maroon: #6e2d2d;
-      --maroon-dark: #4d2020;
-      --brown: #4c3a2f;
-      --text: #40372f;
-      --muted: #82766a;
-      --white: #fffdf8;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
 
-    html {
-      scroll-behavior: smooth;
-    }
+:root {
+    --ivory: #f8f3e9;
+    --cream: #eee3cf;
+    --sand: #d8c3a0;
+    --gold: #ad8b50;
+    --gold-light: #d1b77c;
 
-    body {
-      background: var(--ivory);
-      color: var(--text);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+    --maroon: #6d3030;
+    --maroon-dark: #4c2020;
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    --brown: #514238;
+    --muted: #817467;
 
-    /* -------------------------
-       GLOBAL
-    ------------------------- */
+    --white: #fffdf8;
+}
 
-    .container {
-      width: min(1100px, 90%);
-      margin: auto;
-    }
 
-    .section {
-      padding: 110px 0;
-      position: relative;
-    }
+/* =========================
+   RESET
+========================= */
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.72rem;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .section-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 500;
-      line-height: 1;
-      color: var(--maroon);
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    .section-subtitle {
-      max-width: 580px;
-      margin: 18px auto 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+body {
+    background: var(--ivory);
+    color: var(--brown);
+    font-family: "DM Sans", sans-serif;
+    overflow: hidden;
+}
 
-    .center {
-      text-align: center;
-    }
 
-    /* -------------------------
-       DECORATIVE KOLAM
-    ------------------------- */
+/* =========================
+   INVITATION WRAPPER
+========================= */
 
-    .kolam {
-      width: 90px;
-      height: 90px;
-      margin: 28px auto;
-      position: relative;
-      opacity: 0.45;
-    }
+.invitation {
+    width: 100%;
+}
 
-    .kolam::before,
-    .kolam::after {
-      content: "";
-      position: absolute;
-      inset: 15px;
-      border: 1px solid var(--gold);
-      transform: rotate(45deg);
-    }
 
-    .kolam::after {
-      inset: 25px;
-      transform: rotate(0deg);
-      border-radius: 50%;
-    }
+/* =========================
+   PAGE
+========================= */
 
-    .kolam span {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow:
+.page {
+    min-height: 100svh;
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(173,139,80,0.12),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(109,48,48,0.07),
+            transparent 28%
+        ),
+        var(--ivory);
+}
+
+
+/* =========================
+   PAGE FRAME
+========================= */
+
+.page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 18px;
+
+    border: 1px solid rgba(173,139,80,0.38);
+
+    pointer-events: none;
+}
+
+
+.page::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 28px;
+
+    border: 1px solid rgba(173,139,80,0.13);
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   PAGE CONTENT
+========================= */
+
+.page-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(900px, 90%);
+
+    text-align: center;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.eyebrow {
+    text-transform: uppercase;
+
+    letter-spacing: 0.25em;
+
+    font-size: 0.68rem;
+
+    color: var(--gold);
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+}
+
+
+h1,
+h2,
+h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 500;
+}
+
+
+.page-title {
+    color: var(--maroon);
+
+    font-size: clamp(
+        3.2rem,
+        10vw,
+        7rem
+    );
+
+    line-height: 0.88;
+
+    letter-spacing: -0.035em;
+}
+
+
+.page-heading {
+    color: var(--maroon);
+
+    font-size: clamp(
+        2.8rem,
+        7vw,
+        5rem
+    );
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+
+.body-text {
+    max-width: 600px;
+
+    margin: auto;
+
+    color: var(--muted);
+
+    font-size: 0.95rem;
+
+    line-height: 1.9;
+}
+
+
+/* =========================
+   TAMIL TEXT
+========================= */
+
+.tamil {
+    font-family: "Noto Serif Tamil", serif;
+
+    color: var(--maroon);
+
+    font-size: 1rem;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   KOLAM
+========================= */
+
+.kolam {
+    width: 90px;
+    height: 90px;
+
+    margin: 30px auto;
+
+    position: relative;
+
+    opacity: 0.45;
+}
+
+
+.kolam::before,
+.kolam::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid var(--gold);
+
+    transform: rotate(45deg);
+}
+
+
+.kolam::after {
+
+    inset: 25px;
+
+    transform: rotate(0deg);
+
+    border-radius: 50%;
+}
+
+
+.kolam span {
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
         0 -28px 0 var(--gold),
         0 28px 0 var(--gold),
         28px 0 0 var(--gold),
         -28px 0 0 var(--gold);
-    }
+}
 
-    /* -------------------------
-       HERO
-    ------------------------- */
 
-    .hero {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+/* =========================
+   NAMES
+========================= */
 
-      background:
-        radial-gradient(circle at 15% 20%, rgba(170,137,80,0.12), transparent 25%),
-        radial-gradient(circle at 85% 80%, rgba(110,45,45,0.08), transparent 25%),
+.names {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    color: var(--maroon);
+}
+
+
+.name {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(
+        4rem,
+        13vw,
+        8rem
+    );
+
+    line-height: 0.78;
+
+    letter-spacing: -0.04em;
+}
+
+
+.ampersand {
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: var(--gold);
+
+    font-size: 2.8rem;
+
+    font-style: italic;
+
+    margin: 18px 0;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date {
+
+    margin-top: 30px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.2em;
+
+    font-size: 0.78rem;
+
+    color: var(--brown);
+}
+
+
+.location-small {
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 0.82rem;
+}
+
+
+/* =========================
+   RECEPTION CARD
+========================= */
+
+.reception-card {
+
+    width: min(650px, 100%);
+
+    margin: 35px auto;
+
+    padding: 42px 30px;
+
+    background: rgba(255,253,248,0.8);
+
+    border: 1px solid rgba(173,139,80,0.35);
+
+    box-shadow:
+        0 20px 60px rgba(76,32,32,0.06);
+}
+
+
+.reception-card h3 {
+
+    font-size: 2.8rem;
+
+    color: var(--maroon);
+
+    margin-bottom: 12px;
+}
+
+
+.time {
+
+    color: var(--gold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.18em;
+
+    font-size: 0.75rem;
+
+    margin-bottom: 20px;
+}
+
+
+.venue {
+
+    color: var(--brown);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.55rem;
+}
+
+
+.address {
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 0.85rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FAMILY PAGE
+========================= */
+
+.family {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+
+    max-width: 700px;
+
+    margin: 50px auto 0;
+}
+
+
+.family-card {
+
+    padding: 30px 20px;
+
+    background: rgba(255,253,248,0.65);
+
+    border-top: 1px solid var(--gold);
+
+    border-bottom: 1px solid rgba(173,139,80,0.2);
+}
+
+
+.family-card h3 {
+
+    font-size: 1.8rem;
+
+    color: var(--maroon);
+
+    margin-bottom: 10px;
+}
+
+
+.family-card p {
+
+    color: var(--muted);
+
+    font-size: 0.82rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   FINAL PAGE
+========================= */
+
+.final-page {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(173,139,80,0.13),
+            transparent 45%
+        ),
         var(--ivory);
+}
+
+
+.map-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+    padding: 15px 28px;
+
+    border: 1px solid var(--maroon);
+
+    color: var(--maroon);
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+
+    font-size: 0.7rem;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.map-button:hover {
+
+    background: var(--maroon);
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.next-button {
+
+    position: fixed;
+
+    z-index: 100;
+
+    bottom: 28px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border: 1px solid rgba(109,48,48,0.35);
+
+    background: rgba(255,253,248,0.92);
+
+    backdrop-filter: blur(10px);
+
+    color: var(--maroon);
+
+    padding: 12px 22px;
+
+    cursor: pointer;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.16em;
+
+    font-size: 0.65rem;
+
+    transition: all 0.3s ease;
+}
+
+
+.next-button:hover {
+
+    background: var(--maroon);
+
+    color: white;
+}
+
+
+.next-button.hidden {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateX(-50%)
+        translateY(10px);
+}
+
+
+/* =========================
+   PAGE INDICATOR
+========================= */
+
+.page-indicator {
+
+    position: fixed;
+
+    z-index: 100;
+
+    top: 25px;
+
+    right: 30px;
+
+    color: var(--gold);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================
+   PAGE TRANSITIONS
+========================= */
+
+.page {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s ease;
+}
+
+
+.page.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/*
+   Once all pages have been revealed,
+   normal scrolling is enabled.
+*/
+
+body.scroll-enabled {
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   FADE ANIMATION
+========================= */
+
+.page.visible .page-content {
+
+    animation:
+        pageContentIn 1s ease both;
+}
+
+
+@keyframes pageContentIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(170,137,80,0.35);
-      pointer-events: none;
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .page {
+
+        padding: 35px 18px;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 50px 20px;
+
+    .page::before {
+
+        inset: 10px;
     }
 
-    .small-tamil {
-      font-family: "Noto Serif Tamil", serif;
-      color: var(--maroon);
-      font-size: 1rem;
-      margin-bottom: 12px;
+
+    .page::after {
+
+        inset: 18px;
     }
 
-    .hero h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(4rem, 12vw, 8.5rem);
-      line-height: 0.85;
-      font-weight: 500;
-      color: var(--maroon);
-      letter-spacing: -0.045em;
+
+    .family {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-top: 30px;
     }
+
+
+    .family-card {
+
+        padding: 22px 18px;
+    }
+
+
+    .reception-card {
+
+        padding: 32px 20px;
+    }
+
+
+    .reception-card h3 {
+
+        font-size: 2.3rem;
+    }
+
+
+    .name {
+
+        font-size: clamp(
+            4rem,
+            19vw,
+            6rem
+        );
+    }
+
 
     .ampersand {
-      display: block;
-      font-size: 0.42em;
-      color: var(--gold);
-      font-style: italic;
-      margin: 12px 0;
-    }
 
-    .hero-date {
-      margin-top: 28px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: var(--brown);
-    }
-
-    .hero-location {
-      margin-top: 7px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .scroll-down::after {
-      content: "";
-      display: block;
-      width: 1px;
-      height: 35px;
-      margin: 8px auto 0;
-      background: var(--gold);
-    }
-
-    /* -------------------------
-       INTRO
-    ------------------------- */
-
-    .intro {
-      background: var(--white);
-      text-align: center;
-    }
-
-    .intro-text {
-      max-width: 680px;
-      margin: 35px auto 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      line-height: 1.5;
-      color: var(--brown);
-    }
-
-    /* -------------------------
-       COUNTDOWN
-    ------------------------- */
-
-    .countdown-section {
-      background: var(--maroon);
-      color: white;
-      text-align: center;
-    }
-
-    .countdown-section .eyebrow {
-      color: var(--gold-light);
-    }
-
-    .countdown-section .section-title {
-      color: var(--ivory);
-    }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      max-width: 650px;
-      margin: 50px auto 0;
-      gap: 15px;
-    }
-
-    .count-box {
-      padding: 25px 10px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .count-number {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 3rem;
-      line-height: 1;
-      color: var(--gold-light);
-    }
-
-    .count-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      opacity: 0.7;
-      margin-top: 8px;
-    }
-
-    /* -------------------------
-       COUPLE
-    ------------------------- */
-
-    .couple-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      margin-top: 60px;
-    }
-
-    .person {
-      text-align: center;
-    }
-
-    .portrait {
-      aspect-ratio: 4 / 5;
-      max-width: 330px;
-      margin: auto;
-      background:
-        linear-gradient(135deg, rgba(110,45,45,.15), rgba(170,137,80,.18)),
-        var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .portrait::after {
-      content: "PHOTO";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-    }
-
-    .person h3 {
-      margin-top: 24px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.4rem;
-      font-weight: 500;
-      color: var(--maroon);
-    }
-
-    .person p {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    /* -------------------------
-       EVENTS
-    ------------------------- */
-
-    .events {
-      background: var(--cream);
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 60px;
-    }
-
-    .event-card {
-      background: var(--white);
-      padding: 45px 30px;
-      text-align: center;
-      border-top: 2px solid var(--gold);
-    }
-
-    .event-icon {
-      font-size: 1.7rem;
-      margin-bottom: 18px;
-      color: var(--gold);
-    }
-
-    .event-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--maroon);
-    }
-
-    .event-time {
-      margin: 12px 0;
-      color: var(--gold);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-    }
-
-    .event-card p {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    /* -------------------------
-       TAMIL QUOTE
-    ------------------------- */
-
-    .quote {
-      text-align: center;
-      background: var(--white);
-    }
-
-    .quote-text {
-      font-family: "Noto Serif Tamil", serif;
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      color: var(--maroon);
-      margin: 25px auto 10px;
-    }
-
-    .quote-translation {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.25rem;
-      color: var(--muted);
-    }
-
-    /* -------------------------
-       STORY
-    ------------------------- */
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .story-image {
-      min-height: 500px;
-      background:
-        linear-gradient(rgba(110,45,45,.1), rgba(110,45,45,.1)),
-        var(--cream);
-      position: relative;
-    }
-
-    .story-image::after {
-      content: "OUR STORY";
-      position: absolute;
-      inset: 20px;
-      border: 1px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      letter-spacing: .25em;
-      font-size: .7rem;
-    }
-
-    .story-copy h2 {
-      font-family: "Cormorant Garamond", serif;
-      color: var(--maroon);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 500;
-      line-height: 1;
-      margin-bottom: 25px;
-    }
-
-    .story-copy p {
-      color: var(--muted);
-      margin-bottom: 16px;
-      font-size: 0.95rem;
-    }
-
-    /* -------------------------
-       GALLERY
-    ------------------------- */
-
-    .gallery {
-      background: var(--cream);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-      margin-top: 55px;
-    }
-
-    .gallery-item {
-      background: var(--sand);
-      min-height: 220px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gallery-item::after {
-      content: "PHOTO";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(76,58,47,.45);
-      font-size: .65rem;
-      letter-spacing: .25em;
-    }
-
-    .gallery-item:nth-child(1) {
-      grid-column: span 7;
-      min-height: 360px;
-    }
-
-    .gallery-item:nth-child(2) {
-      grid-column: span 5;
-    }
-
-    .gallery-item:nth-child(3) {
-      grid-column: span 5;
-    }
-
-    .gallery-item:nth-child(4) {
-      grid-column: span 7;
-    }
-
-    /* -------------------------
-       LOCATION
-    ------------------------- */
-
-    .location {
-      text-align: center;
-    }
-
-    .location-card {
-      max-width: 750px;
-      margin: 55px auto 0;
-      padding: 55px 30px;
-      background: var(--white);
-      border: 1px solid rgba(170,137,80,.25);
-    }
-
-    .location-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.6rem;
-      color: var(--maroon);
-      font-weight: 500;
-    }
-
-    .location-card p {
-      color: var(--muted);
-      margin: 10px 0 25px;
-    }
-
-    .map-button {
-      display: inline-block;
-      padding: 12px 25px;
-      border: 1px solid var(--maroon);
-      color: var(--maroon);
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      transition: .3s ease;
-    }
-
-    .map-button:hover {
-      background: var(--maroon);
-      color: white;
-    }
-
-    /* -------------------------
-       RSVP
-    ------------------------- */
-
-    .rsvp {
-      background: var(--maroon);
-      color: white;
-      text-align: center;
-    }
-
-    .rsvp .section-title {
-      color: var(--ivory);
-    }
-
-    .rsvp p {
-      max-width: 520px;
-      margin: 20px auto 35px;
-      color: rgba(255,255,255,.72);
-    }
-
-    .rsvp-button {
-      display: inline-block;
-      padding: 15px 32px;
-      background: var(--gold-light);
-      color: var(--maroon-dark);
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      transition: .3s ease;
-    }
-
-    .rsvp-button:hover {
-      background: white;
-    }
-
-    /* -------------------------
-       FOOTER
-    ------------------------- */
-
-    footer {
-      background: var(--maroon-dark);
-      color: rgba(255,255,255,.65);
-      text-align: center;
-      padding: 55px 20px;
-    }
-
-    footer .names {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.2rem;
-      color: var(--ivory);
-      margin-bottom: 8px;
-    }
-
-    footer p {
-      font-size: .75rem;
-      letter-spacing: .08em;
-    }
-
-    /* -------------------------
-       ANIMATION
-    ------------------------- */
-
-    .fade-up {
-      animation: fadeUp 1s ease both;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* -------------------------
-       MOBILE
-    ------------------------- */
-
-    @media (max-width: 760px) {
-
-      .section {
-        padding: 75px 0;
-      }
-
-      .hero::before {
-        inset: 10px;
-      }
-
-      .hero h1 {
-        font-size: clamp(4rem, 20vw, 6rem);
-      }
-
-      .countdown {
-        gap: 7px;
-      }
-
-      .count-box {
-        padding: 18px 5px;
-      }
-
-      .count-number {
         font-size: 2.2rem;
-      }
 
-      .couple-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-      }
-
-      .events-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .story-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .story-image {
-        min-height: 350px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .gallery-item,
-      .gallery-item:nth-child(1),
-      .gallery-item:nth-child(2),
-      .gallery-item:nth-child(3),
-      .gallery-item:nth-child(4) {
-        grid-column: span 1;
-        min-height: 190px;
-      }
-
-      .gallery-item:nth-child(1) {
-        grid-column: span 2;
-      }
-
-      .gallery-item:nth-child(4) {
-        grid-column: span 2;
-      }
+        margin: 14px 0;
     }
-  </style>
+
+
+    .page-indicator {
+
+        top: 17px;
+
+        right: 20px;
+    }
+
+
+    .next-button {
+
+        bottom: 18px;
+    }
+
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <!-- =========================
-       HERO
-  ========================== -->
 
-  <header class="hero">
+<!-- ==========================================
+     INVITATION
+=========================================== -->
 
-    <div class="hero-content fade-up">
-
-      <div class="small-tamil">
-        திருமண அழைப்பிதழ்
-      </div>
-
-      <div class="eyebrow">
-        With the blessings of our families
-      </div>
-
-      <h1>
-        Arjun
-        <span class="ampersand">&</span>
-        Kavya
-      </h1>
-
-      <div class="hero-date">
-        18 January 2027
-      </div>
-
-      <div class="hero-location">
-        Coimbatore · Tamil Nadu
-      </div>
-
-      <div class="kolam">
-        <span></span>
-      </div>
-
-    </div>
-
-    <div class="scroll-down">
-      Scroll to explore
-    </div>
-
-  </header>
+<main class="invitation">
 
 
-  <!-- =========================
-       INTRO
-  ========================== -->
+    <!-- ======================================
+         PAGE 1 — COVER
+    ======================================= -->
 
-  <section class="section intro">
+    <section class="page visible" data-page="1">
 
-    <div class="container">
+        <div class="page-content">
 
-      <div class="eyebrow">
-        A new beginning
-      </div>
+            <div class="tamil">
+                திருமண வரவேற்பு
+            </div>
 
-      <h2 class="section-title">
-        Two families.<br>
-        One beautiful beginning.
-      </h2>
-
-      <div class="kolam">
-        <span></span>
-      </div>
-
-      <p class="intro-text">
-        With the love and blessings of our parents and elders,
-        we invite you to celebrate the beginning of our life together.
-      </p>
-
-    </div>
-
-  </section>
+            <div class="eyebrow">
+                With the blessings of our families
+            </div>
 
 
-  <!-- =========================
-       COUNTDOWN
-  ========================== -->
+            <div class="names">
 
-  <section class="section countdown-section">
+                <div class="name">
+                    Sandeep
+                </div>
 
-    <div class="container">
+                <div class="ampersand">
+                    &
+                </div>
 
-      <div class="eyebrow">
-        Until we say "I do"
-      </div>
+                <div class="name">
+                    Pradeepa
+                </div>
 
-      <h2 class="section-title">
-        The countdown begins
-      </h2>
-
-      <div class="countdown">
-
-        <div class="count-box">
-          <div class="count-number" id="days">00</div>
-          <div class="count-label">Days</div>
-        </div>
-
-        <div class="count-box">
-          <div class="count-number" id="hours">00</div>
-          <div class="count-label">Hours</div>
-        </div>
-
-        <div class="count-box">
-          <div class="count-number" id="minutes">00</div>
-          <div class="count-label">Minutes</div>
-        </div>
-
-        <div class="count-box">
-          <div class="count-number" id="seconds">00</div>
-          <div class="count-label">Seconds</div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+            </div>
 
 
-  <!-- =========================
-       COUPLE
-  ========================== -->
+            <div class="kolam">
+                <span></span>
+            </div>
 
-  <section class="section">
 
-    <div class="container">
+            <div class="date">
+                Tuesday · 17 November 2026
+            </div>
 
-      <div class="center">
-
-        <div class="eyebrow">
-          The couple
-        </div>
-
-        <h2 class="section-title">
-          Meet Arjun & Kavya
-        </h2>
-
-      </div>
-
-      <div class="couple-grid">
-
-        <div class="person">
-
-          <div class="portrait"></div>
-
-          <h3>Arjun</h3>
-
-          <p>
-            Son of Mr. & Mrs. Ramasamy
-          </p>
+            <div class="location-small">
+                Coimbatore · Tamil Nadu
+            </div>
 
         </div>
 
-
-        <div class="person">
-
-          <div class="portrait"></div>
-
-          <h3>Kavya</h3>
-
-          <p>
-            Daughter of Mr. & Mrs. Subramaniam
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       EVENTS
-  ========================== -->
 
-  <section class="section events">
+    <!-- ======================================
+         PAGE 2 — INVITATION
+    ======================================= -->
 
-    <div class="container">
+    <section class="page" data-page="2">
 
-      <div class="center">
+        <div class="page-content">
 
-        <div class="eyebrow">
-          Join us
-        </div>
+            <div class="eyebrow">
+                You are warmly invited
+            </div>
 
-        <h2 class="section-title">
-          The celebrations
-        </h2>
+            <h2 class="page-heading">
+                Join us for an evening<br>
+                of celebration
+            </h2>
 
-        <p class="section-subtitle">
-          A few beautiful moments as our families come together
-          to celebrate this new chapter.
-        </p>
+            <div class="kolam">
+                <span></span>
+            </div>
 
-      </div>
+            <p class="body-text">
 
+                With immense happiness and the blessings
+                of our parents and elders, we invite you
+                to join us as we celebrate our reception.
 
-      <div class="events-grid">
+                <br><br>
 
-        <div class="event-card">
+                Your presence and blessings will make
+                this evening truly special to us.
 
-          <div class="event-icon">✦</div>
-
-          <h3>Reception</h3>
-
-          <div class="event-time">
-            Saturday · 17 January · 6:30 PM
-          </div>
-
-          <p>
-            An evening of dinner, music and celebration
-            with family and friends.
-          </p>
+            </p>
 
         </div>
 
+    </section>
 
-        <div class="event-card">
 
-          <div class="event-icon">❋</div>
 
-          <h3>Muhurtham</h3>
+    <!-- ======================================
+         PAGE 3 — RECEPTION
+    ======================================= -->
 
-          <div class="event-time">
-            Sunday · 18 January · 7:30 AM
-          </div>
+    <section class="page" data-page="3">
 
-          <p>
-            Join us as we begin our married life
-            surrounded by the blessings of our elders.
-          </p>
+        <div class="page-content">
+
+            <div class="eyebrow">
+                The celebration
+            </div>
+
+            <h2 class="page-heading">
+                Reception
+            </h2>
+
+
+            <div class="reception-card">
+
+                <h3>
+                    Sandeep & Pradeepa
+                </h3>
+
+                <div class="time">
+                    Tuesday · 17 November 2026 · From 5:00 PM
+                </div>
+
+                <div class="venue">
+                    Shree MS Mahal
+                </div>
+
+                <div class="address">
+                    Karumathampatti – Annur Road<br>
+                    Kittampalayam
+                </div>
+
+            </div>
+
+
+            <div class="tamil">
+                அன்புடன் வருகை தந்து சிறப்பிக்க வேண்டுகிறோம்
+            </div>
 
         </div>
 
+    </section>
 
-        <div class="event-card">
 
-          <div class="event-icon">◌</div>
 
-          <h3>Wedding Lunch</h3>
+    <!-- ======================================
+         PAGE 4 — FAMILIES
+    ======================================= -->
 
-          <div class="event-time">
-            Sunday · 18 January · 11:30 AM
-          </div>
+    <section class="page" data-page="4">
 
-          <p>
-            A traditional Kongu-style vegetarian feast
-            served with love.
-          </p>
+        <div class="page-content">
+
+            <div class="eyebrow">
+                Together with our families
+            </div>
+
+            <h2 class="page-heading">
+                A celebration<br>
+                of two families
+            </h2>
+
+
+            <p class="body-text">
+
+                As two families come together,
+                we are grateful for the love,
+                guidance and blessings that have
+                brought us to this beautiful moment.
+
+            </p>
+
+
+            <div class="family">
+
+                <div class="family-card">
+
+                    <h3>
+                        Sandeep
+                    </h3>
+
+                    <p>
+                        Together with his<br>
+                        family & loved ones
+                    </p>
+
+                </div>
+
+
+                <div class="family-card">
+
+                    <h3>
+                        Pradeepa
+                    </h3>
+
+                    <p>
+                        Together with her<br>
+                        family & loved ones
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
 
-      </div>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       TAMIL QUOTE
-  ========================== -->
 
-  <section class="section quote">
+    <!-- ======================================
+         PAGE 5 — BLESSING
+    ======================================= -->
 
-    <div class="container">
+    <section class="page" data-page="5">
 
-      <div class="eyebrow">
-        A blessing for our journey
-      </div>
+        <div class="page-content">
 
-      <div class="quote-text">
-        அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை<br>
-        பண்பும் பயனும் அது
-      </div>
+            <div class="eyebrow">
+                With love & blessings
+            </div>
 
-      <div class="quote-translation">
-        “A home filled with love and virtue becomes
-        a life of meaning and grace.”
-      </div>
+            <div class="tamil">
 
-    </div>
+                அன்பும் அறனும் உடைத்தாயின்
+                இல்வாழ்க்கை<br>
 
-  </section>
+                பண்பும் பயனும் அது
+
+            </div>
 
 
-  <!-- =========================
-       STORY
-  ========================== -->
+            <div class="kolam">
+                <span></span>
+            </div>
 
-  <section class="section">
 
-    <div class="container story-grid">
+            <p class="body-text">
 
-      <div class="story-image"></div>
+                May our journey together be filled
+                with love, laughter, understanding
+                and the blessings of our elders.
 
-      <div class="story-copy">
+            </p>
 
-        <div class="eyebrow">
-          Our story
         </div>
 
-        <h2>
-          From two paths<br>
-          to one journey.
-        </h2>
-
-        <p>
-          What started as two separate lives slowly became
-          shared conversations, shared laughter and eventually
-          a shared dream for the future.
-        </p>
-
-        <p>
-          With our families beside us and the blessings of
-          those who came before us, we're excited to begin
-          this next chapter together.
-        </p>
-
-        <p>
-          We can't imagine celebrating this moment without
-          the people who have been part of our journey.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       GALLERY
-  ========================== -->
 
-  <section class="section gallery">
+    <!-- ======================================
+         PAGE 6 — VENUE / MAP
+    ======================================= -->
 
-    <div class="container">
+    <section class="page final-page" data-page="6">
 
-      <div class="center">
+        <div class="page-content">
 
-        <div class="eyebrow">
-          Moments
+            <div class="eyebrow">
+                We look forward to seeing you
+            </div>
+
+            <h2 class="page-heading">
+                Join us at
+            </h2>
+
+
+            <div class="reception-card">
+
+                <h3>
+                    Shree MS Mahal
+                </h3>
+
+                <div class="time">
+                    Reception · From 5:00 PM
+                </div>
+
+                <div class="address">
+
+                    Karumathampatti – Annur Road<br>
+                    Kittampalayam<br>
+                    Tamil Nadu
+
+                </div>
+
+
+                <!-- GOOGLE MAPS LINK -->
+
+                <a
+                    class="map-button"
+                    href="https://maps.app.goo.gl/pPTStF38WmTZeoaB6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    📍 Open Google Maps
+                </a>
+
+            </div>
+
+
+            <div class="kolam">
+                <span></span>
+            </div>
+
+
+            <div class="tamil">
+                உங்கள் வருகையே எங்கள் மகிழ்ச்சி
+            </div>
+
+
+            <p class="body-text">
+
+                With love,<br>
+
+                <strong>
+                    Sandeep & Pradeepa
+                </strong>
+
+            </p>
+
         </div>
 
-        <h2 class="section-title">
-          Before the big day
-        </h2>
-
-        <p class="section-subtitle">
-          Replace these placeholders with your favourite
-          engagement and pre-wedding photographs.
-        </p>
-
-      </div>
+    </section>
 
 
-      <div class="gallery-grid">
-
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-
-      </div>
-
-    </div>
-
-  </section>
+</main>
 
 
-  <!-- =========================
-       LOCATION
-  ========================== -->
 
-  <section class="section location">
+<!-- ==========================================
+     PAGE CONTROLS
+=========================================== -->
 
-    <div class="container">
+<div class="page-indicator">
 
-      <div class="eyebrow">
-        Where we'll gather
-      </div>
+    <span id="currentPage">1</span>
+    /
+    <span id="totalPages">6</span>
 
-      <h2 class="section-title">
-        The Venue
-      </h2>
-
-      <div class="location-card">
-
-        <h3>
-          Sri Lakshmi Mahal
-        </h3>
-
-        <p>
-          Avinashi Road<br>
-          Coimbatore, Tamil Nadu
-        </p>
-
-        <!-- Replace # with Google Maps URL -->
-        <a
-          href="#"
-          class="map-button"
-          target="_blank"
-        >
-          Open in Google Maps
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
+</div>
 
 
-  <!-- =========================
-       RSVP
-  ========================== -->
-
-  <section class="section rsvp">
-
-    <div class="container">
-
-      <div class="eyebrow">
-        We hope you'll be there
-      </div>
-
-      <h2 class="section-title">
-        Celebrate with us
-      </h2>
-
-      <p>
-        Your presence would mean more to us than any gift.
-        Please let us know if you'll be joining us.
-      </p>
-
-      <!-- Replace # with RSVP form/link -->
-      <a
-        href="#"
-        class="rsvp-button"
-      >
-        RSVP
-      </a>
-
-    </div>
-
-  </section>
+<button
+    id="nextButton"
+    class="next-button"
+    type="button"
+>
+    Open invitation →
+</button>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
 
-  <footer>
+<script>
 
-    <div class="names">
-      Arjun & Kavya
-    </div>
+/*
+==================================================
+   INVITATION PAGE SYSTEM
+==================================================
 
-    <p>
-      18 · 01 · 2027
-    </p>
+   The invitation contains six pages.
 
-    <div class="kolam">
-      <span></span>
-    </div>
+   Initially:
 
-    <p>
-      With love, laughter & the blessings of our families
-    </p>
+       Page 1 = visible
+       Pages 2–6 = hidden
 
-  </footer>
+   Each click reveals the next page.
+
+   After Page 6 has been revealed:
+
+       Normal scrolling becomes available.
+
+==================================================
+*/
 
 
-  <!-- =========================
-       COUNTDOWN SCRIPT
-  ========================== -->
+const pages =
+    document.querySelectorAll(".page");
 
-  <script>
+const nextButton =
+    document.getElementById("nextButton");
 
-    /*
-      CHANGE THIS DATE
-      Format:
-      YYYY-MM-DDTHH:MM:SS
-    */
+const currentPageText =
+    document.getElementById("currentPage");
 
-    const weddingDate = new Date("2027-01-18T07:30:00");
+const totalPagesText =
+    document.getElementById("totalPages");
 
-    function updateCountdown() {
 
-      const now = new Date();
+let currentPage = 1;
 
-      const difference = weddingDate - now;
+const totalPages = pages.length;
 
-      if (difference <= 0) {
+totalPagesText.textContent = totalPages;
 
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
+
+/*
+==================================================
+   REVEAL NEXT PAGE
+==================================================
+*/
+
+function revealNextPage() {
+
+    if (currentPage >= totalPages) {
+
+        enableScrolling();
 
         return;
-      }
-
-      const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-      );
-
-      const hours = Math.floor(
-        (difference / (1000 * 60 * 60)) % 24
-      );
-
-      const minutes = Math.floor(
-        (difference / (1000 * 60)) % 60
-      );
-
-      const seconds = Math.floor(
-        (difference / 1000) % 60
-      );
-
-      document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
-
-      document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-
-      document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-
-      document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
     }
 
-    updateCountdown();
 
-    setInterval(updateCountdown, 1000);
+    currentPage++;
 
-  </script>
+
+    const nextPage =
+        pages[currentPage - 1];
+
+
+    nextPage.classList.add("visible");
+
+
+    /*
+       Wait briefly so the new page can
+       animate into view.
+    */
+
+    setTimeout(() => {
+
+        nextPage.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 100);
+
+
+    updateInterface();
+
+
+    /*
+       If this is the last page,
+       allow normal scrolling.
+    */
+
+    if (currentPage === totalPages) {
+
+        enableScrolling();
+
+    }
+
+}
+
+
+/*
+==================================================
+   ENABLE NORMAL SCROLLING
+==================================================
+*/
+
+function enableScrolling() {
+
+    document.body.classList.add(
+        "scroll-enabled"
+    );
+
+
+    nextButton.classList.add(
+        "hidden"
+    );
+
+}
+
+
+/*
+==================================================
+   UPDATE BUTTON + PAGE NUMBER
+==================================================
+*/
+
+function updateInterface() {
+
+    currentPageText.textContent =
+        currentPage;
+
+
+    if (currentPage === 1) {
+
+        nextButton.textContent =
+            "Open invitation →";
+
+    }
+
+    else if (currentPage < totalPages) {
+
+        nextButton.textContent =
+            "Continue →";
+
+    }
+
+    else {
+
+        nextButton.textContent =
+            "Explore invitation";
+
+    }
+
+}
+
+
+/*
+==================================================
+   BUTTON
+==================================================
+*/
+
+nextButton.addEventListener(
+    "click",
+    revealNextPage
+);
+
+
+/*
+==================================================
+   CLICK ANYWHERE TO CONTINUE
+
+   On mobile, guests can simply tap the
+   invitation itself to reveal the next page.
+
+   We exclude:
+      - Google Maps button
+      - RSVP/map links
+==================================================
+*/
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target.closest(".map-button") ||
+            event.target.closest(".next-button")
+        ) {
+            return;
+        }
+
+
+        /*
+           Don't trigger this after all pages
+           have already been revealed.
+        */
+
+        if (
+            currentPage < totalPages
+        ) {
+
+            revealNextPage();
+
+        }
+
+    }
+);
+
+
+/*
+==================================================
+   KEYBOARD SUPPORT
+==================================================
+*/
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key === " " ||
+            event.key === "Enter"
+        ) {
+
+            if (
+                currentPage < totalPages
+            ) {
+
+                event.preventDefault();
+
+                revealNextPage();
+
+            }
+
+        }
+
+    }
+);
+
+
+/*
+==================================================
+   INITIAL STATE
+==================================================
+*/
+
+updateInterface();
+
+</script>
 
 </body>
 </html>
