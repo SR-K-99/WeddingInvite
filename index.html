@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,30 +10,37 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+>
 
 <style>
 
+/* =========================================================
+   COLORS
+========================================================= */
+
 :root {
-    --ivory: #f8f3e9;
-    --cream: #eee3cf;
-    --sand: #d8c3a0;
-    --gold: #ad8b50;
-    --gold-light: #d1b77c;
+    --ivory: #f8f4eb;
+    --cream: #eee5d5;
 
     --maroon: #6d3030;
-    --maroon-dark: #4c2020;
+    --maroon-dark: #492020;
 
-    --brown: #514238;
-    --muted: #817467;
+    --gold: #ad8b50;
+    --gold-light: #d7bd87;
+
+    --brown: #57483c;
+    --muted: #82766a;
 
     --white: #fffdf8;
 }
 
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -48,87 +56,130 @@ body {
     background: var(--ivory);
     color: var(--brown);
     font-family: "DM Sans", sans-serif;
+
+    /*
+       Scrolling is locked until every page
+       has been opened.
+    */
     overflow: hidden;
+
+    cursor: pointer;
 }
 
 
-/* =========================
-   INVITATION WRAPPER
-========================= */
-
-.invitation {
-    width: 100%;
-}
-
-
-/* =========================
+/* =========================================================
    PAGE
-========================= */
+========================================================= */
 
 .page {
-    min-height: 100svh;
-    width: 100%;
 
-    position: relative;
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 40px 20px;
+    padding: 40px 25px;
 
     overflow: hidden;
 
     background:
+
         radial-gradient(
             circle at 15% 20%,
             rgba(173,139,80,0.12),
             transparent 27%
         ),
+
         radial-gradient(
             circle at 85% 80%,
-            rgba(109,48,48,0.07),
-            transparent 28%
+            rgba(109,48,48,0.08),
+            transparent 30%
         ),
+
         var(--ivory);
+
+    /*
+       Pages begin below the screen.
+    */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+
+    transition:
+        transform 0.9s cubic-bezier(.77,0,.18,1),
+        opacity 0.7s ease,
+        visibility 0s linear 0.9s;
+
+    z-index: 1;
 }
 
 
-/* =========================
-   PAGE FRAME
-========================= */
+/*
+   Active page
+*/
+
+.page.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+    z-index: 10;
+
+    transition:
+        transform 0.9s cubic-bezier(.77,0,.18,1),
+        opacity 0.7s ease,
+        visibility 0s;
+}
+
+
+/* =========================================================
+   DOUBLE FRAME
+========================================================= */
 
 .page::before {
+
     content: "";
 
     position: absolute;
 
     inset: 18px;
 
-    border: 1px solid rgba(173,139,80,0.38);
+    border: 1px solid rgba(173,139,80,0.42);
 
     pointer-events: none;
 }
 
 
 .page::after {
+
     content: "";
 
     position: absolute;
 
-    inset: 28px;
+    inset: 29px;
 
-    border: 1px solid rgba(173,139,80,0.13);
+    border: 1px solid rgba(173,139,80,0.15);
 
     pointer-events: none;
 }
 
 
-/* =========================
-   PAGE CONTENT
-========================= */
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .page-content {
+
     position: relative;
 
     z-index: 5;
@@ -136,113 +187,150 @@ body {
     width: min(900px, 90%);
 
     text-align: center;
+
+    animation: contentIn 1s ease both;
 }
 
 
-/* =========================
+@keyframes contentIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
    TYPOGRAPHY
-========================= */
+========================================================= */
 
 .eyebrow {
+
     text-transform: uppercase;
 
-    letter-spacing: 0.25em;
+    letter-spacing: 0.28em;
 
-    font-size: 0.68rem;
-
-    color: var(--gold);
+    font-size: 0.65rem;
 
     font-weight: 600;
 
-    margin-bottom: 18px;
+    color: var(--gold);
+
+    margin-bottom: 20px;
 }
 
 
 h1,
 h2,
 h3 {
+
     font-family: "Cormorant Garamond", serif;
 
     font-weight: 500;
 }
 
 
-.page-title {
-    color: var(--maroon);
-
-    font-size: clamp(
-        3.2rem,
-        10vw,
-        7rem
-    );
-
-    line-height: 0.88;
-
-    letter-spacing: -0.035em;
-}
-
-
 .page-heading {
+
     color: var(--maroon);
 
     font-size: clamp(
-        2.8rem,
-        7vw,
-        5rem
+        3rem,
+        8vw,
+        6rem
     );
 
-    line-height: 1;
+    line-height: 0.95;
 
-    margin-bottom: 25px;
+    letter-spacing: -0.03em;
 }
 
 
 .body-text {
-    max-width: 600px;
 
-    margin: auto;
+    max-width: 620px;
+
+    margin: 0 auto;
 
     color: var(--muted);
 
-    font-size: 0.95rem;
+    font-size: 0.92rem;
 
     line-height: 1.9;
 }
 
 
-/* =========================
-   TAMIL TEXT
-========================= */
+/* =========================================================
+   NAMES
+========================================================= */
 
-.tamil {
-    font-family: "Noto Serif Tamil", serif;
+.names {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.name {
+
+    font-family: "Cormorant Garamond", serif;
 
     color: var(--maroon);
 
-    font-size: 1rem;
+    font-size: clamp(
+        4.2rem,
+        13vw,
+        8.5rem
+    );
 
-    margin-bottom: 12px;
+    line-height: 0.75;
+
+    letter-spacing: -0.045em;
 }
 
 
-/* =========================
-   KOLAM
-========================= */
+.ampersand {
 
-.kolam {
-    width: 90px;
-    height: 90px;
+    font-family: "Cormorant Garamond", serif;
 
-    margin: 30px auto;
+    color: var(--gold);
+
+    font-size: 3rem;
+
+    font-style: italic;
+
+    margin: 25px 0;
+}
+
+
+/* =========================================================
+   EMBLEM
+========================================================= */
+
+.emblem {
+
+    width: 85px;
+
+    height: 85px;
+
+    margin: 35px auto;
 
     position: relative;
 
-    opacity: 0.45;
+    opacity: 0.65;
 }
 
 
-.kolam::before,
-.kolam::after {
+.emblem::before {
 
     content: "";
 
@@ -256,29 +344,35 @@ h3 {
 }
 
 
-.kolam::after {
+.emblem::after {
 
-    inset: 25px;
+    content: "";
 
-    transform: rotate(0deg);
+    position: absolute;
+
+    inset: 26px;
+
+    border: 1px solid var(--gold);
 
     border-radius: 50%;
 }
 
 
-.kolam span {
+.emblem span {
 
     position: absolute;
 
-    width: 7px;
-    height: 7px;
+    width: 6px;
+
+    height: 6px;
 
     border-radius: 50%;
 
     background: var(--gold);
 
-    top: 50%;
     left: 50%;
+
+    top: 50%;
 
     transform: translate(-50%, -50%);
 
@@ -290,55 +384,9 @@ h3 {
 }
 
 
-/* =========================
-   NAMES
-========================= */
-
-.names {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    color: var(--maroon);
-}
-
-
-.name {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(
-        4rem,
-        13vw,
-        8rem
-    );
-
-    line-height: 0.78;
-
-    letter-spacing: -0.04em;
-}
-
-
-.ampersand {
-
-    font-family: "Cormorant Garamond", serif;
-
-    color: var(--gold);
-
-    font-size: 2.8rem;
-
-    font-style: italic;
-
-    margin: 18px 0;
-}
-
-
-/* =========================
+/* =========================================================
    DATE
-========================= */
+========================================================= */
 
 .date {
 
@@ -346,27 +394,27 @@ h3 {
 
     text-transform: uppercase;
 
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
 
-    font-size: 0.78rem;
+    font-size: 0.75rem;
 
     color: var(--brown);
 }
 
 
-.location-small {
+.place-small {
 
-    margin-top: 8px;
+    margin-top: 9px;
 
     color: var(--muted);
 
-    font-size: 0.82rem;
+    font-size: 0.78rem;
 }
 
 
-/* =========================
+/* =========================================================
    RECEPTION CARD
-========================= */
+========================================================= */
 
 .reception-card {
 
@@ -374,22 +422,22 @@ h3 {
 
     margin: 35px auto;
 
-    padding: 42px 30px;
+    padding: 45px 30px;
 
-    background: rgba(255,253,248,0.8);
+    background: rgba(255,253,248,0.82);
 
-    border: 1px solid rgba(173,139,80,0.35);
+    border: 1px solid rgba(173,139,80,0.38);
 
     box-shadow:
-        0 20px 60px rgba(76,32,32,0.06);
+        0 25px 70px rgba(76,32,32,0.07);
 }
 
 
 .reception-card h3 {
 
-    font-size: 2.8rem;
-
     color: var(--maroon);
+
+    font-size: 3rem;
 
     margin-bottom: 12px;
 }
@@ -401,59 +449,59 @@ h3 {
 
     text-transform: uppercase;
 
-    letter-spacing: 0.18em;
+    letter-spacing: 0.17em;
 
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 
 .venue {
 
-    color: var(--brown);
-
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 1.55rem;
+    color: var(--brown);
+
+    font-size: 1.65rem;
 }
 
 
 .address {
 
-    margin-top: 7px;
+    margin-top: 8px;
 
     color: var(--muted);
 
-    font-size: 0.85rem;
+    font-size: 0.83rem;
 
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 
-/* =========================
-   FAMILY PAGE
-========================= */
+/* =========================================================
+   FAMILY
+========================================================= */
 
-.family {
+.family-grid {
 
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 30px;
+    gap: 25px;
 
     max-width: 700px;
 
-    margin: 50px auto 0;
+    margin: 45px auto 0;
 }
 
 
 .family-card {
 
-    padding: 30px 20px;
+    padding: 28px 20px;
 
-    background: rgba(255,253,248,0.65);
+    background: rgba(255,253,248,0.6);
 
     border-top: 1px solid var(--gold);
 
@@ -463,11 +511,11 @@ h3 {
 
 .family-card h3 {
 
-    font-size: 1.8rem;
-
     color: var(--maroon);
 
-    margin-bottom: 10px;
+    font-size: 2rem;
+
+    margin-bottom: 8px;
 }
 
 
@@ -475,29 +523,192 @@ h3 {
 
     color: var(--muted);
 
-    font-size: 0.82rem;
+    font-size: 0.8rem;
 
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 
-/* =========================
+/* =========================================================
+   CLICK INDICATOR
+========================================================= */
+
+.tap-hint {
+
+    position: absolute;
+
+    bottom: 42px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--gold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.18em;
+
+    font-size: 0.58rem;
+
+    opacity: 0.8;
+
+    animation: pulse 2.2s infinite;
+
+    white-space: nowrap;
+
+    z-index: 20;
+}
+
+
+.tap-hint::after {
+
+    content: "↓";
+
+    display: block;
+
+    font-size: 1rem;
+
+    margin-top: 6px;
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+========================================================= */
+
+.page-number {
+
+    position: fixed;
+
+    top: 27px;
+
+    right: 32px;
+
+    z-index: 1000;
+
+    color: var(--gold);
+
+    font-size: 0.63rem;
+
+    letter-spacing: 0.15em;
+
+    /*
+       IMPORTANT:
+       Hidden until every page is opened.
+    */
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0s linear 0.6s;
+
+    pointer-events: none;
+}
+
+
+body.all-open .page-number {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0s;
+}
+
+
+/* =========================================================
    FINAL PAGE
-========================= */
+========================================================= */
 
 .final-page {
 
     background:
+
         radial-gradient(
             circle at center,
-            rgba(173,139,80,0.13),
+            rgba(173,139,80,0.15),
             transparent 45%
         ),
+
         var(--ivory);
 }
 
 
-.map-button {
+/* =========================================================
+   LORD MURUGAN IMAGE
+========================================================= */
+
+.murugan-frame {
+
+    width: 145px;
+
+    height: 190px;
+
+    margin: 0 auto 25px;
+
+    padding: 7px;
+
+    background: var(--white);
+
+    border: 1px solid rgba(173,139,80,0.5);
+
+    box-shadow:
+        0 15px 45px rgba(76,32,32,0.12);
+
+    position: relative;
+}
+
+
+.murugan-frame::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 3px;
+
+    border: 1px solid rgba(173,139,80,0.25);
+
+    pointer-events: none;
+}
+
+
+.murugan-frame img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================================
+   GOOGLE MAPS
+========================================================= */
+
+.map-link {
 
     display: inline-flex;
 
@@ -505,11 +716,11 @@ h3 {
 
     justify-content: center;
 
-    gap: 10px;
+    gap: 9px;
 
-    margin-top: 30px;
+    margin-top: 28px;
 
-    padding: 15px 28px;
+    padding: 13px 23px;
 
     border: 1px solid var(--maroon);
 
@@ -519,9 +730,9 @@ h3 {
 
     text-transform: uppercase;
 
-    letter-spacing: 0.15em;
+    letter-spacing: 0.13em;
 
-    font-size: 0.7rem;
+    font-size: 0.65rem;
 
     transition:
         background 0.3s ease,
@@ -530,7 +741,7 @@ h3 {
 }
 
 
-.map-button:hover {
+.map-link:hover {
 
     background: var(--maroon);
 
@@ -540,158 +751,63 @@ h3 {
 }
 
 
-/* =========================
-   NEXT BUTTON
-========================= */
+/* =========================================================
+   AFTER ALL PAGES ARE OPEN
+========================================================= */
 
-.next-button {
+body.all-open {
 
-    position: fixed;
+    overflow-y: auto;
 
-    z-index: 100;
-
-    bottom: 28px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border: 1px solid rgba(109,48,48,0.35);
-
-    background: rgba(255,253,248,0.92);
-
-    backdrop-filter: blur(10px);
-
-    color: var(--maroon);
-
-    padding: 12px 22px;
-
-    cursor: pointer;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.16em;
-
-    font-size: 0.65rem;
-
-    transition: all 0.3s ease;
+    cursor: default;
 }
 
 
-.next-button:hover {
+/*
+   IMPORTANT:
+   Once all pages are opened, every page becomes
+   part of the normal document flow.
+*/
 
-    background: var(--maroon);
+body.all-open .page {
 
-    color: white;
-}
+    position: relative;
 
+    inset: auto;
 
-.next-button.hidden {
+    width: 100%;
 
-    opacity: 0;
+    min-height: 100svh;
 
-    pointer-events: none;
-
-    transform:
-        translateX(-50%)
-        translateY(10px);
-}
-
-
-/* =========================
-   PAGE INDICATOR
-========================= */
-
-.page-indicator {
-
-    position: fixed;
-
-    z-index: 100;
-
-    top: 25px;
-
-    right: 30px;
-
-    color: var(--gold);
-
-    font-size: 0.65rem;
-
-    letter-spacing: 0.12em;
-}
-
-
-/* =========================
-   PAGE TRANSITIONS
-========================= */
-
-.page {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: translateY(35px);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        visibility 0.8s ease;
-}
-
-
-.page.visible {
+    height: auto;
 
     opacity: 1;
 
     visibility: visible;
 
-    transform: translateY(0);
+    transform: none;
+
+    transition: none;
+
+    z-index: auto;
+
+    overflow: hidden;
 }
 
 
 /*
-   Once all pages have been revealed,
-   normal scrolling is enabled.
+   Hide the click instruction.
 */
 
-body.scroll-enabled {
+body.all-open .tap-hint {
 
-    overflow-y: auto;
+    display: none;
 }
 
 
-/* =========================
-   FADE ANIMATION
-========================= */
-
-.page.visible .page-content {
-
-    animation:
-        pageContentIn 1s ease both;
-}
-
-
-@keyframes pageContentIn {
-
-    from {
-
-        opacity: 0;
-
-        transform: translateY(20px);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -713,19 +829,21 @@ body.scroll-enabled {
     }
 
 
-    .family {
+    .name {
 
-        grid-template-columns: 1fr;
-
-        gap: 15px;
-
-        margin-top: 30px;
+        font-size: clamp(
+            4rem,
+            19vw,
+            6.3rem
+        );
     }
 
 
-    .family-card {
+    .ampersand {
 
-        padding: 22px 18px;
+        font-size: 2.3rem;
+
+        margin: 18px 0;
     }
 
 
@@ -737,29 +855,27 @@ body.scroll-enabled {
 
     .reception-card h3 {
 
-        font-size: 2.3rem;
+        font-size: 2.4rem;
     }
 
 
-    .name {
+    .family-grid {
 
-        font-size: clamp(
-            4rem,
-            19vw,
-            6rem
-        );
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 30px;
     }
 
 
-    .ampersand {
+    .family-card {
 
-        font-size: 2.2rem;
-
-        margin: 14px 0;
+        padding: 20px;
     }
 
 
-    .page-indicator {
+    .page-number {
 
         top: 17px;
 
@@ -767,17 +883,19 @@ body.scroll-enabled {
     }
 
 
-    .next-button {
+    .murugan-frame {
 
-        bottom: 18px;
+        width: 125px;
+
+        height: 165px;
     }
 
 }
 
 
-/* =========================
-   ACCESSIBILITY
-========================= */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -789,11 +907,8 @@ body.scroll-enabled {
 
         animation-iteration-count: 1 !important;
 
-        scroll-behavior: auto !important;
-
         transition-duration: 0.01ms !important;
     }
-
 }
 
 </style>
@@ -803,345 +918,394 @@ body.scroll-enabled {
 <body>
 
 
-<!-- ==========================================
-     INVITATION
-=========================================== -->
-
 <main class="invitation">
 
 
-    <!-- ======================================
-         PAGE 1 — COVER
-    ======================================= -->
+<!-- =====================================================
+     PAGE 1
+===================================================== -->
 
-    <section class="page visible" data-page="1">
+<section class="page active">
 
-        <div class="page-content">
+    <div class="page-content">
 
-            <div class="tamil">
-                திருமண வரவேற்பு
+        <div class="eyebrow">
+            With the blessings of our families
+        </div>
+
+
+        <div class="names">
+
+            <div class="name">
+                Sandeep
             </div>
 
-            <div class="eyebrow">
-                With the blessings of our families
+            <div class="ampersand">
+                &
+            </div>
+
+            <div class="name">
+                Pradeepa
+            </div>
+
+        </div>
+
+
+        <div class="emblem">
+            <span></span>
+        </div>
+
+
+        <div class="date">
+            Tuesday · November 17 · 2026
+        </div>
+
+
+        <div class="place-small">
+            Coimbatore, Tamil Nadu
+        </div>
+
+    </div>
+
+
+    <div class="tap-hint">
+        Tap anywhere to continue
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 2
+===================================================== -->
+
+<section class="page">
+
+    <div class="page-content">
+
+        <div class="eyebrow">
+            You are warmly invited
+        </div>
+
+
+        <h2 class="page-heading">
+            An evening<br>
+            of celebration
+        </h2>
+
+
+        <div class="emblem">
+            <span></span>
+        </div>
+
+
+        <p class="body-text">
+
+            With immense happiness and the blessings
+            of our families, we invite you to join us
+            as we celebrate this special occasion.
+
+            <br><br>
+
+            Your presence will make this evening
+            truly memorable for us.
+
+        </p>
+
+    </div>
+
+
+    <div class="tap-hint">
+        Tap anywhere to continue
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 3
+===================================================== -->
+
+<section class="page">
+
+    <div class="page-content">
+
+        <div class="eyebrow">
+            Save the evening
+        </div>
+
+
+        <h2 class="page-heading">
+            Reception
+        </h2>
+
+
+        <div class="reception-card">
+
+            <h3>
+                Sandeep & Pradeepa
+            </h3>
+
+
+            <div class="time">
+                Tuesday · November 17, 2026 · From 5:00 PM
             </div>
 
 
-            <div class="names">
+            <div class="venue">
+                Shree MS Mahal
+            </div>
 
-                <div class="name">
+
+            <div class="address">
+                Karumathampatti – Annur Road<br>
+                Kittampalayam
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="tap-hint">
+        Tap anywhere to continue
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 4
+===================================================== -->
+
+<section class="page">
+
+    <div class="page-content">
+
+        <div class="eyebrow">
+            A celebration of love
+        </div>
+
+
+        <h2 class="page-heading">
+            Two hearts.<br>
+            Two families.
+        </h2>
+
+
+        <p class="body-text">
+
+            Surrounded by the love and blessings
+            of our families, we look forward to
+            celebrating this beautiful occasion
+            with everyone who is dear to us.
+
+        </p>
+
+
+        <div class="family-grid">
+
+            <div class="family-card">
+
+                <h3>
                     Sandeep
-                </div>
+                </h3>
 
-                <div class="ampersand">
-                    &
-                </div>
+                <p>
+                    Together with his<br>
+                    family and loved ones
+                </p>
 
-                <div class="name">
+            </div>
+
+
+            <div class="family-card">
+
+                <h3>
                     Pradeepa
-                </div>
-
-            </div>
-
-
-            <div class="kolam">
-                <span></span>
-            </div>
-
-
-            <div class="date">
-                Tuesday · 17 November 2026
-            </div>
-
-            <div class="location-small">
-                Coimbatore · Tamil Nadu
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ======================================
-         PAGE 2 — INVITATION
-    ======================================= -->
-
-    <section class="page" data-page="2">
-
-        <div class="page-content">
-
-            <div class="eyebrow">
-                You are warmly invited
-            </div>
-
-            <h2 class="page-heading">
-                Join us for an evening<br>
-                of celebration
-            </h2>
-
-            <div class="kolam">
-                <span></span>
-            </div>
-
-            <p class="body-text">
-
-                With immense happiness and the blessings
-                of our parents and elders, we invite you
-                to join us as we celebrate our reception.
-
-                <br><br>
-
-                Your presence and blessings will make
-                this evening truly special to us.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ======================================
-         PAGE 3 — RECEPTION
-    ======================================= -->
-
-    <section class="page" data-page="3">
-
-        <div class="page-content">
-
-            <div class="eyebrow">
-                The celebration
-            </div>
-
-            <h2 class="page-heading">
-                Reception
-            </h2>
-
-
-            <div class="reception-card">
-
-                <h3>
-                    Sandeep & Pradeepa
                 </h3>
 
-                <div class="time">
-                    Tuesday · 17 November 2026 · From 5:00 PM
-                </div>
-
-                <div class="venue">
-                    Shree MS Mahal
-                </div>
-
-                <div class="address">
-                    Karumathampatti – Annur Road<br>
-                    Kittampalayam
-                </div>
-
-            </div>
-
-
-            <div class="tamil">
-                அன்புடன் வருகை தந்து சிறப்பிக்க வேண்டுகிறோம்
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ======================================
-         PAGE 4 — FAMILIES
-    ======================================= -->
-
-    <section class="page" data-page="4">
-
-        <div class="page-content">
-
-            <div class="eyebrow">
-                Together with our families
-            </div>
-
-            <h2 class="page-heading">
-                A celebration<br>
-                of two families
-            </h2>
-
-
-            <p class="body-text">
-
-                As two families come together,
-                we are grateful for the love,
-                guidance and blessings that have
-                brought us to this beautiful moment.
-
-            </p>
-
-
-            <div class="family">
-
-                <div class="family-card">
-
-                    <h3>
-                        Sandeep
-                    </h3>
-
-                    <p>
-                        Together with his<br>
-                        family & loved ones
-                    </p>
-
-                </div>
-
-
-                <div class="family-card">
-
-                    <h3>
-                        Pradeepa
-                    </h3>
-
-                    <p>
-                        Together with her<br>
-                        family & loved ones
-                    </p>
-
-                </div>
+                <p>
+                    Together with her<br>
+                    family and loved ones
+                </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+
+    <div class="tap-hint">
+        Tap anywhere to continue
+    </div>
+
+</section>
 
 
 
-    <!-- ======================================
-         PAGE 5 — BLESSING
-    ======================================= -->
+<!-- =====================================================
+     PAGE 5
+===================================================== -->
 
-    <section class="page" data-page="5">
+<section class="page">
 
-        <div class="page-content">
+    <div class="page-content">
 
-            <div class="eyebrow">
-                With love & blessings
-            </div>
-
-            <div class="tamil">
-
-                அன்பும் அறனும் உடைத்தாயின்
-                இல்வாழ்க்கை<br>
-
-                பண்பும் பயனும் அது
-
-            </div>
+        <div class="eyebrow">
+            With love and blessings
+        </div>
 
 
-            <div class="kolam">
-                <span></span>
-            </div>
+        <h2 class="page-heading">
+            A beautiful<br>
+            beginning
+        </h2>
 
 
-            <p class="body-text">
+        <div class="emblem">
+            <span></span>
+        </div>
 
-                May our journey together be filled
-                with love, laughter, understanding
-                and the blessings of our elders.
 
-            </p>
+        <p class="body-text">
+
+            May this new chapter be filled with
+            love, laughter, understanding and
+            countless beautiful memories.
+
+            <br><br>
+
+            We would be honoured to have you
+            celebrate this special evening with us.
+
+        </p>
+
+    </div>
+
+
+    <div class="tap-hint">
+        Tap anywhere to continue
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 6 — FINAL PAGE
+===================================================== -->
+
+<section class="page final-page">
+
+    <div class="page-content">
+
+
+        <!-- =========================================
+             LORD MURUGAN IMAGE
+
+             Place murugar.png in the same folder
+             as index.html.
+        ========================================== -->
+
+        <div class="murugan-frame">
+
+            <img
+                src="murugar.png"
+                alt="Lord Murugan"
+            >
 
         </div>
 
-    </section>
+
+        <div class="eyebrow">
+            We look forward to seeing you
+        </div>
 
 
+        <h2 class="page-heading">
+            Join us
+        </h2>
 
-    <!-- ======================================
-         PAGE 6 — VENUE / MAP
-    ======================================= -->
 
-    <section class="page final-page" data-page="6">
+        <div class="reception-card">
 
-        <div class="page-content">
+            <h3>
+                Shree MS Mahal
+            </h3>
 
-            <div class="eyebrow">
-                We look forward to seeing you
+
+            <div class="time">
+                Reception · From 5:00 PM
             </div>
 
-            <h2 class="page-heading">
-                Join us at
-            </h2>
 
+            <div class="address">
 
-            <div class="reception-card">
+                Tuesday, November 17, 2026<br><br>
 
-                <h3>
-                    Shree MS Mahal
-                </h3>
-
-                <div class="time">
-                    Reception · From 5:00 PM
-                </div>
-
-                <div class="address">
-
-                    Karumathampatti – Annur Road<br>
-                    Kittampalayam<br>
-                    Tamil Nadu
-
-                </div>
-
-
-                <!-- GOOGLE MAPS LINK -->
-
-                <a
-                    class="map-button"
-                    href="https://maps.app.goo.gl/pPTStF38WmTZeoaB6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    📍 Open Google Maps
-                </a>
+                Karumathampatti – Annur Road<br>
+                Kittampalayam<br>
+                Tamil Nadu
 
             </div>
 
 
-            <div class="kolam">
-                <span></span>
-            </div>
+            <!-- GOOGLE MAPS -->
 
-
-            <div class="tamil">
-                உங்கள் வருகையே எங்கள் மகிழ்ச்சி
-            </div>
-
-
-            <p class="body-text">
-
-                With love,<br>
-
-                <strong>
-                    Sandeep & Pradeepa
-                </strong>
-
-            </p>
+            <a
+                class="map-link"
+                href="https://maps.app.goo.gl/pPTStF38WmTZeoaB6"
+                target="_blank"
+                rel="noopener noreferrer"
+                onclick="event.stopPropagation();"
+            >
+                📍 View Location
+            </a>
 
         </div>
 
-    </section>
+
+        <div class="emblem">
+            <span></span>
+        </div>
+
+
+        <p class="body-text">
+
+            With love,<br><br>
+
+            <strong>
+                Sandeep & Pradeepa
+            </strong>
+
+        </p>
+
+    </div>
+
+
+    <div class="tap-hint">
+        Tap anywhere to open
+    </div>
+
+</section>
 
 
 </main>
 
 
 
-<!-- ==========================================
-     PAGE CONTROLS
-=========================================== -->
+<!-- =====================================================
+     PAGE NUMBER
 
-<div class="page-indicator">
+     This is intentionally hidden at first.
+===================================================== -->
+
+<div class="page-number">
 
     <span id="currentPage">1</span>
     /
@@ -1150,236 +1314,218 @@ body.scroll-enabled {
 </div>
 
 
-<button
-    id="nextButton"
-    class="next-button"
-    type="button"
->
-    Open invitation →
-</button>
-
-
 
 <script>
 
-/*
-==================================================
-   INVITATION PAGE SYSTEM
-==================================================
-
-   The invitation contains six pages.
-
-   Initially:
-
-       Page 1 = visible
-       Pages 2–6 = hidden
-
-   Each click reveals the next page.
-
-   After Page 6 has been revealed:
-
-       Normal scrolling becomes available.
-
-==================================================
-*/
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
 
 
 const pages =
     document.querySelectorAll(".page");
 
-const nextButton =
-    document.getElementById("nextButton");
 
-const currentPageText =
-    document.getElementById("currentPage");
-
-const totalPagesText =
-    document.getElementById("totalPages");
-
-
-let currentPage = 1;
-
-const totalPages = pages.length;
-
-totalPagesText.textContent = totalPages;
+const totalPages =
+    pages.length;
 
 
 /*
-==================================================
-   REVEAL NEXT PAGE
-==================================================
+   currentPage represents the number of pages
+   that have been opened.
+
+   Page 1 is already visible, so we start at 1.
 */
 
-function revealNextPage() {
+let currentPage = 1;
+
+
+/*
+   Set total number.
+*/
+
+document.getElementById("totalPages").textContent =
+    totalPages;
+
+
+/* =========================================================
+   UPDATE PAGE NUMBER
+========================================================= */
+
+function updatePageNumber() {
+
+    document.getElementById("currentPage").textContent =
+        currentPage;
+
+}
+
+
+/* =========================================================
+   OPEN NEXT PAGE
+========================================================= */
+
+function openNextPage() {
+
+    /*
+       Once all pages are open, don't reveal
+       anything else.
+    */
 
     if (currentPage >= totalPages) {
-
-        enableScrolling();
 
         return;
     }
 
 
+    /*
+       Move to next page.
+    */
+
     currentPage++;
 
 
-    const nextPage =
-        pages[currentPage - 1];
-
-
-    nextPage.classList.add("visible");
-
-
     /*
-       Wait briefly so the new page can
-       animate into view.
+       Reveal the corresponding page.
+
+       Example:
+
+       currentPage = 2
+       pages[1] = Page 2
     */
 
-    setTimeout(() => {
-
-        nextPage.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }, 100);
-
-
-    updateInterface();
+    pages[currentPage - 1].classList.add("active");
 
 
     /*
-       If this is the last page,
-       allow normal scrolling.
+       IMPORTANT:
+       Update the number immediately.
+
+       It remains hidden until all pages
+       are opened, but the value is always
+       correct.
+    */
+
+    updatePageNumber();
+
+
+    /*
+       If this was the final page,
+       unlock normal scrolling.
     */
 
     if (currentPage === totalPages) {
 
-        enableScrolling();
+        openAllPages();
 
     }
 
 }
 
 
-/*
-==================================================
-   ENABLE NORMAL SCROLLING
-==================================================
-*/
+/* =========================================================
+   OPEN ALL PAGES / ENABLE SCROLLING
+========================================================= */
 
-function enableScrolling() {
+function openAllPages() {
 
-    document.body.classList.add(
-        "scroll-enabled"
-    );
+    /*
+       Mark invitation as fully opened.
+    */
 
-
-    nextButton.classList.add(
-        "hidden"
-    );
-
-}
+    document.body.classList.add("all-open");
 
 
-/*
-==================================================
-   UPDATE BUTTON + PAGE NUMBER
-==================================================
-*/
+    /*
+       Make absolutely sure every page is visible.
+    */
 
-function updateInterface() {
+    pages.forEach(function(page) {
 
-    currentPageText.textContent =
-        currentPage;
+        page.classList.add("active");
+
+    });
 
 
-    if (currentPage === 1) {
+    /*
+       The final page is now page 6.
+    */
 
-        nextButton.textContent =
-            "Open invitation →";
+    currentPage = totalPages;
 
-    }
+    updatePageNumber();
 
-    else if (currentPage < totalPages) {
 
-        nextButton.textContent =
-            "Continue →";
+    /*
+       Start the normal scroll view
+       from the beginning.
+    */
 
-    }
-
-    else {
-
-        nextButton.textContent =
-            "Explore invitation";
-
-    }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
-/*
-==================================================
-   BUTTON
-==================================================
-*/
-
-nextButton.addEventListener(
-    "click",
-    revealNextPage
-);
-
-
-/*
-==================================================
-   CLICK ANYWHERE TO CONTINUE
-
-   On mobile, guests can simply tap the
-   invitation itself to reveal the next page.
-
-   We exclude:
-      - Google Maps button
-      - RSVP/map links
-==================================================
-*/
+/* =========================================================
+   CLICK ANYWHERE TO OPEN NEXT PAGE
+========================================================= */
 
 document.addEventListener(
     "click",
     function(event) {
 
+        /*
+           The Google Maps link must remain
+           a normal clickable link.
+
+           Do NOT advance the invitation when
+           someone clicks the map link.
+        */
+
         if (
-            event.target.closest(".map-button") ||
-            event.target.closest(".next-button")
+            event.target.closest(".map-link")
         ) {
+
             return;
         }
 
 
         /*
-           Don't trigger this after all pages
-           have already been revealed.
+           Once everything is open, normal
+           scrolling is enabled, so clicks
+           no longer change pages.
         */
 
         if (
-            currentPage < totalPages
+            document.body.classList.contains("all-open")
         ) {
 
-            revealNextPage();
-
+            return;
         }
+
+
+        openNextPage();
 
     }
 );
 
 
-/*
-==================================================
+/* =========================================================
    KEYBOARD SUPPORT
-==================================================
-*/
+========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
+
+        /*
+           Space
+           Enter
+           Right Arrow
+           all open the next page.
+        */
 
         if (
             event.key === "ArrowRight" ||
@@ -1388,12 +1534,12 @@ document.addEventListener(
         ) {
 
             if (
-                currentPage < totalPages
+                !document.body.classList.contains("all-open")
             ) {
 
                 event.preventDefault();
 
-                revealNextPage();
+                openNextPage();
 
             }
 
@@ -1403,13 +1549,11 @@ document.addEventListener(
 );
 
 
-/*
-==================================================
-   INITIAL STATE
-==================================================
-*/
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-updateInterface();
+updatePageNumber();
 
 </script>
 
