@@ -37,7 +37,6 @@
     --white: #fffdf8;
 }
 
-
 /* =========================================================
    RESET
 ========================================================= */
@@ -56,326 +55,177 @@ body {
     background: var(--ivory);
     color: var(--brown);
     font-family: "DM Sans", sans-serif;
-
-    /*
-       Scrolling is locked until every page
-       has been opened.
-    */
     overflow: hidden;
-
     cursor: pointer;
 }
 
-
 /* =========================================================
-   PAGE
+   PAGE CONTAINER (PREVENTS TOP CLIPPING)
 ========================================================= */
 
 .page {
-
     position: fixed;
-
     inset: 0;
-
     width: 100%;
     height: 100svh;
-
     display: flex;
-
-    align-items: center;
+    align-items: flex-start; /* Keeps top content visible on small screens */
     justify-content: center;
-
-    padding: 40px 25px;
-
-    overflow: hidden;
-
+    padding: 30px 20px;
+    overflow-y: auto;
     background:
-
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(173,139,80,0.12),
-            transparent 27%
-        ),
-
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(109,48,48,0.08),
-            transparent 30%
-        ),
-
+        radial-gradient(circle at 15% 20%, rgba(173,139,80,0.12), transparent 27%),
+        radial-gradient(circle at 85% 80%, rgba(109,48,48,0.08), transparent 30%),
         var(--ivory);
-
-    /*
-       Pages begin below the screen.
-    */
     opacity: 0;
     visibility: hidden;
     transform: translateY(100%);
-
-    transition:
-        transform 0.9s cubic-bezier(.77,0,.18,1),
-        opacity 0.7s ease,
-        visibility 0s linear 0.9s;
-
+    transition: transform 0.9s cubic-bezier(.77,0,.18,1), opacity 0.7s ease, visibility 0s linear 0.9s;
     z-index: 1;
 }
 
-
-/*
-   Active page
-*/
-
 .page.active {
-
     opacity: 1;
-
     visibility: visible;
-
     transform: translateY(0);
-
     z-index: 10;
-
-    transition:
-        transform 0.9s cubic-bezier(.77,0,.18,1),
-        opacity 0.7s ease,
-        visibility 0s;
+    transition: transform 0.9s cubic-bezier(.77,0,.18,1), opacity 0.7s ease, visibility 0s;
 }
-
 
 /* =========================================================
    DOUBLE FRAME
 ========================================================= */
 
 .page::before {
-
     content: "";
-
     position: absolute;
-
     inset: 18px;
-
     border: 1px solid rgba(173,139,80,0.42);
-
     pointer-events: none;
 }
-
 
 .page::after {
-
     content: "";
-
     position: absolute;
-
     inset: 29px;
-
     border: 1px solid rgba(173,139,80,0.15);
-
     pointer-events: none;
 }
-
 
 /* =========================================================
    CONTENT
 ========================================================= */
 
 .page-content {
-
     position: relative;
-
     z-index: 5;
-
     width: min(900px, 90%);
-
     text-align: center;
-
+    margin: auto 0; /* Keeps content vertically centered when height permits */
     animation: contentIn 1s ease both;
 }
 
-
 @keyframes contentIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
 
 /* =========================================================
    TYPOGRAPHY
 ========================================================= */
 
 .eyebrow {
-
     text-transform: uppercase;
-
     letter-spacing: 0.28em;
-
     font-size: 0.65rem;
-
     font-weight: 600;
-
     color: var(--gold);
-
     margin-bottom: 20px;
 }
 
-
-h1,
-h2,
-h3 {
-
+h1, h2, h3 {
     font-family: "Cormorant Garamond", serif;
-
     font-weight: 500;
 }
 
-
 .page-heading {
-
     color: var(--maroon);
-
-    font-size: clamp(
-        3rem,
-        8vw,
-        6rem
-    );
-
+    font-size: clamp(3rem, 8vw, 6rem);
     line-height: 0.95;
-
     letter-spacing: -0.03em;
 }
 
-
 .body-text {
-
     max-width: 620px;
-
     margin: 0 auto;
-
     color: var(--muted);
-
     font-size: 0.92rem;
-
     line-height: 1.9;
 }
-
 
 /* =========================================================
    NAMES
 ========================================================= */
 
 .names {
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 }
 
-
 .name {
-
     font-family: "Cormorant Garamond", serif;
-
     color: var(--maroon);
-
-    font-size: clamp(
-        4.2rem,
-        13vw,
-        8.5rem
-    );
-
+    font-size: clamp(4.2rem, 13vw, 8.5rem);
     line-height: 0.75;
-
     letter-spacing: -0.045em;
 }
 
-
 .ampersand {
-
     font-family: "Cormorant Garamond", serif;
-
     color: var(--gold);
-
     font-size: 3rem;
-
     font-style: italic;
-
     margin: 25px 0;
 }
-
 
 /* =========================================================
    EMBLEM
 ========================================================= */
 
 .emblem {
-
     width: 85px;
-
     height: 85px;
-
     margin: 35px auto;
-
     position: relative;
-
     opacity: 0.65;
 }
 
-
 .emblem::before {
-
     content: "";
-
     position: absolute;
-
     inset: 15px;
-
     border: 1px solid var(--gold);
-
     transform: rotate(45deg);
 }
 
-
 .emblem::after {
-
     content: "";
-
     position: absolute;
-
     inset: 26px;
-
     border: 1px solid var(--gold);
-
     border-radius: 50%;
 }
 
-
 .emblem span {
-
     position: absolute;
-
     width: 6px;
-
     height: 6px;
-
     border-radius: 50%;
-
     background: var(--gold);
-
     left: 50%;
-
     top: 50%;
-
     transform: translate(-50%, -50%);
-
     box-shadow:
         0 -28px 0 var(--gold),
         0 28px 0 var(--gold),
@@ -383,530 +233,319 @@ h3 {
         -28px 0 0 var(--gold);
 }
 
-
 /* =========================================================
    DATE
 ========================================================= */
 
 .date {
-
     margin-top: 30px;
-
     text-transform: uppercase;
-
     letter-spacing: 0.22em;
-
     font-size: 0.75rem;
-
     color: var(--brown);
 }
 
-
 .place-small {
-
     margin-top: 9px;
-
     color: var(--muted);
-
     font-size: 0.78rem;
 }
-
 
 /* =========================================================
    RECEPTION CARD
 ========================================================= */
 
 .reception-card {
-
     width: min(650px, 100%);
-
     margin: 35px auto;
-
     padding: 45px 30px;
-
     background: rgba(255,253,248,0.82);
-
     border: 1px solid rgba(173,139,80,0.38);
-
-    box-shadow:
-        0 25px 70px rgba(76,32,32,0.07);
+    box-shadow: 0 25px 70px rgba(76,32,32,0.07);
 }
 
-
 .reception-card h3 {
-
     color: var(--maroon);
-
     font-size: 3rem;
-
     margin-bottom: 12px;
 }
 
-
 .time {
-
     color: var(--gold);
-
     text-transform: uppercase;
-
     letter-spacing: 0.17em;
-
     font-size: 0.7rem;
-
     margin-bottom: 22px;
 }
 
-
 .venue {
-
     font-family: "Cormorant Garamond", serif;
-
     color: var(--brown);
-
     font-size: 1.65rem;
 }
 
-
 .address {
-
     margin-top: 8px;
-
     color: var(--muted);
-
     font-size: 0.83rem;
-
     line-height: 1.8;
 }
 
-
 /* =========================================================
-   FAMILY
+   PAGE 4 GRAPHIC & FAMILY
 ========================================================= */
 
-.family-grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 25px;
-
-    max-width: 700px;
-
-    margin: 45px auto 0;
+.page-four-content {
+    position: relative;
 }
 
+/* Intertwined hearts SVG background motif */
+.page-four-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="%23ad8b50" stroke-width="2" stroke-linecap="round"><path d="M70 140 C 20 90, 20 40, 60 30 C 80 25, 95 40, 100 50 C 105 40, 120 25, 140 30 C 180 40, 180 90, 130 140" opacity="0.12"/><path d="M130 150 C 180 100, 180 50, 140 40 C 120 35, 105 50, 100 60 C 95 50, 80 35, 60 40 C 20 50, 20 100, 70 150" opacity="0.18"/></svg>') center center no-repeat;
+    background-size: 280px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.family-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 700px;
+    margin: 45px auto 0;
+    position: relative;
+    z-index: 2;
+}
 
 .family-card {
-
     padding: 28px 20px;
-
-    background: rgba(255,253,248,0.6);
-
+    background: rgba(255,253,248,0.75);
     border-top: 1px solid var(--gold);
-
     border-bottom: 1px solid rgba(173,139,80,0.2);
+    backdrop-filter: blur(4px);
 }
 
-
 .family-card h3 {
-
     color: var(--maroon);
-
     font-size: 2rem;
-
     margin-bottom: 8px;
 }
 
-
 .family-card p {
-
     color: var(--muted);
-
     font-size: 0.8rem;
-
     line-height: 1.7;
 }
-
 
 /* =========================================================
    CLICK INDICATOR
 ========================================================= */
 
 .tap-hint {
-
     position: absolute;
-
-    bottom: 42px;
-
+    bottom: 25px;
     left: 50%;
-
     transform: translateX(-50%);
-
     color: var(--gold);
-
     text-transform: uppercase;
-
     letter-spacing: 0.18em;
-
     font-size: 0.58rem;
-
     opacity: 0.8;
-
     animation: pulse 2.2s infinite;
-
     white-space: nowrap;
-
     z-index: 20;
 }
 
-
 .tap-hint::after {
-
     content: "↓";
-
     display: block;
-
     font-size: 1rem;
-
-    margin-top: 6px;
+    margin-top: 4px;
+    text-align: center;
 }
-
 
 @keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 0.35;
-    }
-
-    50% {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
 }
-
 
 /* =========================================================
    PAGE NUMBER
 ========================================================= */
 
 .page-number {
-
     position: fixed;
-
     top: 27px;
-
     right: 32px;
-
     z-index: 1000;
-
     color: var(--gold);
-
     font-size: 0.63rem;
-
     letter-spacing: 0.15em;
-
-    /*
-       IMPORTANT:
-       Hidden until every page is opened.
-    */
-
     opacity: 0;
-
     visibility: hidden;
-
-    transition:
-        opacity 0.6s ease,
-        visibility 0s linear 0.6s;
-
+    transition: opacity 0.6s ease, visibility 0s linear 0.6s;
     pointer-events: none;
 }
 
-
 body.all-open .page-number {
-
     opacity: 1;
-
     visibility: visible;
-
-    transition:
-        opacity 0.6s ease,
-        visibility 0s;
+    transition: opacity 0.6s ease, visibility 0s;
 }
 
-
 /* =========================================================
-   FINAL PAGE
+   FINAL PAGE & FANCY TEMPLE ARCH FRAME
 ========================================================= */
 
 .final-page {
-
     background:
-
-        radial-gradient(
-            circle at center,
-            rgba(173,139,80,0.15),
-            transparent 45%
-        ),
-
+        radial-gradient(circle at center, rgba(173,139,80,0.15), transparent 45%),
         var(--ivory);
 }
 
+.final-page .reception-card {
+    margin: 15px auto;
+    padding: 22px 20px;
+}
 
-/* =========================================================
-   LORD MURUGAN IMAGE
-========================================================= */
+.final-page .eyebrow {
+    margin-bottom: 8px;
+}
+
+.final-page .page-heading {
+    margin-bottom: 8px;
+}
 
 .murugan-frame {
-
-    width: 145px;
-
-    height: 190px;
-
-    margin: 0 auto 25px;
-
-    padding: 7px;
-
-    background: var(--white);
-
-    border: 1px solid rgba(173,139,80,0.5);
-
-    box-shadow:
-        0 15px 45px rgba(76,32,32,0.12);
-
+    width: min(180px, 50vw);
+    height: min(240px, 32vh);
+    margin: 5px auto 18px;
+    padding: 8px;
+    background: radial-gradient(circle at center, #ffffff 60%, #fdf8ed 100%);
+    border: 2px solid var(--gold);
+    border-radius: 90px 90px 16px 16px; 
+    box-shadow: 
+        0 10px 25px rgba(76, 32, 32, 0.12),
+        0 0 15px rgba(173, 139, 80, 0.2),
+        inset 0 0 0 2px rgba(173, 139, 80, 0.25);
     position: relative;
+    z-index: 2;
 }
-
 
 .murugan-frame::before {
-
     content: "";
-
     position: absolute;
-
-    inset: 3px;
-
-    border: 1px solid rgba(173,139,80,0.25);
-
+    inset: -5px;
+    border: 1px dashed var(--gold);
+    border-radius: 95px 95px 20px 20px;
     pointer-events: none;
+    opacity: 0.7;
 }
 
+.murugan-frame::after {
+    content: "❖";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ivory);
+    color: var(--gold);
+    font-size: 0.95rem;
+    padding: 0 4px;
+    line-height: 1;
+}
 
 .murugan-frame img {
-
     width: 100%;
-
     height: 100%;
-
-    object-fit: cover;
-
+    object-fit: contain; /* Ensures full image displays without cropping top or crown */
+    object-position: center center;
     display: block;
+    border-radius: 80px 80px 10px 10px;
+    background: #ffffff;
 }
-
 
 /* =========================================================
    GOOGLE MAPS
 ========================================================= */
 
 .map-link {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 9px;
-
-    margin-top: 28px;
-
-    padding: 13px 23px;
-
+    margin-top: 18px;
+    padding: 11px 20px;
     border: 1px solid var(--maroon);
-
     color: var(--maroon);
-
     text-decoration: none;
-
     text-transform: uppercase;
-
     letter-spacing: 0.13em;
-
     font-size: 0.65rem;
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
-
 
 .map-link:hover {
-
     background: var(--maroon);
-
     color: white;
-
     transform: translateY(-2px);
 }
-
 
 /* =========================================================
    AFTER ALL PAGES ARE OPEN
 ========================================================= */
 
 body.all-open {
-
     overflow-y: auto;
-
     cursor: default;
 }
 
-
-/*
-   IMPORTANT:
-   Once all pages are opened, every page becomes
-   part of the normal document flow.
-*/
-
 body.all-open .page {
-
     position: relative;
-
     inset: auto;
-
     width: 100%;
-
     min-height: 100svh;
-
     height: auto;
-
     opacity: 1;
-
     visibility: visible;
-
     transform: none;
-
     transition: none;
-
     z-index: auto;
-
     overflow: hidden;
 }
 
-
-/*
-   Hide the click instruction.
-*/
-
 body.all-open .tap-hint {
-
     display: none;
 }
 
-
 /* =========================================================
-   MOBILE
+   MOBILE RESPONSIVENESS
 ========================================================= */
 
 @media (max-width: 700px) {
-
-    .page {
-
-        padding: 35px 18px;
-    }
-
-
-    .page::before {
-
-        inset: 10px;
-    }
-
-
-    .page::after {
-
-        inset: 18px;
-    }
-
-
-    .name {
-
-        font-size: clamp(
-            4rem,
-            19vw,
-            6.3rem
-        );
-    }
-
-
-    .ampersand {
-
-        font-size: 2.3rem;
-
-        margin: 18px 0;
-    }
-
-
-    .reception-card {
-
-        padding: 32px 20px;
-    }
-
-
-    .reception-card h3 {
-
-        font-size: 2.4rem;
-    }
-
-
-    .family-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 14px;
-
-        margin-top: 30px;
-    }
-
-
-    .family-card {
-
-        padding: 20px;
-    }
-
-
-    .page-number {
-
-        top: 17px;
-
-        right: 20px;
-    }
-
-
-    .murugan-frame {
-
-        width: 125px;
-
-        height: 165px;
-    }
-
+    .page { padding: 25px 15px; }
+    .page::before { inset: 10px; }
+    .page::after { inset: 18px; }
+    .name { font-size: clamp(3.8rem, 18vw, 6rem); }
+    .ampersand { font-size: 2.2rem; margin: 15px 0; }
+    .reception-card { padding: 28px 18px; }
+    .reception-card h3 { font-size: 2.2rem; }
+    .family-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 25px; }
+    .family-card { padding: 18px; }
+    .page-number { top: 17px; right: 20px; }
+    .murugan-frame { width: 150px; height: 200px; }
+    .murugan-frame::before { border-radius: 80px 80px 18px 18px; }
+    .murugan-frame img { border-radius: 70px 70px 8px 8px; }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
-
         animation-iteration-count: 1 !important;
-
         transition-duration: 0.01ms !important;
     }
 }
@@ -914,647 +553,201 @@ body.all-open .tap-hint {
 </style>
 </head>
 
-
 <body>
-
 
 <main class="invitation">
 
-
-<!-- =====================================================
-     PAGE 1
-===================================================== -->
-
+<!-- PAGE 1 -->
 <section class="page active">
-
     <div class="page-content">
-
-        <div class="eyebrow">
-            With the blessings of our families
-        </div>
-
-
+        <div class="eyebrow">With the blessings of our families</div>
         <div class="names">
-
-            <div class="name">
-                Sandeep
-            </div>
-
-            <div class="ampersand">
-                &
-            </div>
-
-            <div class="name">
-                Pradeepa
-            </div>
-
+            <div class="name">Sandeep</div>
+            <div class="ampersand">&</div>
+            <div class="name">Pradeepa</div>
         </div>
-
-
-        <div class="emblem">
-            <span></span>
-        </div>
-
-
-        <div class="date">
-            Tuesday · November 17 · 2026
-        </div>
-
-
-        <div class="place-small">
-            Coimbatore, Tamil Nadu
-        </div>
-
+        <div class="emblem"><span></span></div>
+        <div class="date">Tuesday · November 17 · 2026</div>
+        <div class="place-small">Coimbatore, Tamil Nadu</div>
     </div>
-
-
-    <div class="tap-hint">
-        Tap anywhere to continue
-    </div>
-
+    <div class="tap-hint">Tap anywhere to continue</div>
 </section>
 
-
-
-<!-- =====================================================
-     PAGE 2
-===================================================== -->
-
+<!-- PAGE 2 -->
 <section class="page">
-
     <div class="page-content">
-
-        <div class="eyebrow">
-            You are warmly invited
-        </div>
-
-
-        <h2 class="page-heading">
-            An evening<br>
-            of celebration
-        </h2>
-
-
-        <div class="emblem">
-            <span></span>
-        </div>
-
-
+        <div class="eyebrow">You are warmly invited</div>
+        <h2 class="page-heading">An evening<br>of celebration</h2>
+        <div class="emblem"><span></span></div>
         <p class="body-text">
-
-            With immense happiness and the blessings
-            of our families, we invite you to join us
-            as we celebrate this special occasion.
-
-            <br><br>
-
-            Your presence will make this evening
-            truly memorable for us.
-
+            With immense happiness and the blessings of our families, we invite you to join us as we celebrate this special occasion.<br><br>
+            Your presence will make this evening truly memorable for us.
         </p>
-
     </div>
-
-
-    <div class="tap-hint">
-        Tap anywhere to continue
-    </div>
-
+    <div class="tap-hint">Tap anywhere to continue</div>
 </section>
 
-
-
-<!-- =====================================================
-     PAGE 3
-===================================================== -->
-
+<!-- PAGE 3 -->
 <section class="page">
-
     <div class="page-content">
-
-        <div class="eyebrow">
-            Save the evening
-        </div>
-
-
-        <h2 class="page-heading">
-            Reception
-        </h2>
-
-
+        <div class="eyebrow">Save the evening</div>
+        <h2 class="page-heading">Reception</h2>
         <div class="reception-card">
-
-            <h3>
-                Sandeep & Pradeepa
-            </h3>
-
-
-            <div class="time">
-                Tuesday · November 17, 2026 · From 5:00 PM
-            </div>
-
-
-            <div class="venue">
-                Shree MS Mahal
-            </div>
-
-
+            <h3>Sandeep & Pradeepa</h3>
+            <div class="time">Tuesday · November 17, 2026 · From 5:00 PM</div>
+            <div class="venue">Shree MS Mahal</div>
             <div class="address">
                 Karumathampatti – Annur Road<br>
                 Kittampalayam
             </div>
-
         </div>
-
     </div>
-
-
-    <div class="tap-hint">
-        Tap anywhere to continue
-    </div>
-
+    <div class="tap-hint">Tap anywhere to continue</div>
 </section>
 
-
-
-<!-- =====================================================
-     PAGE 4
-===================================================== -->
-
+<!-- PAGE 4 -->
 <section class="page">
-
-    <div class="page-content">
-
-        <div class="eyebrow">
-            A celebration of love
-        </div>
-
-
-        <h2 class="page-heading">
-            Two hearts.<br>
-            Two families.
-        </h2>
-
-
+    <div class="page-content page-four-content">
+        <div class="eyebrow">A celebration of love</div>
+        <h2 class="page-heading">Two hearts.<br>Two families.</h2>
         <p class="body-text">
-
-            Surrounded by the love and blessings
-            of our families, we look forward to
-            celebrating this beautiful occasion
-            with everyone who is dear to us.
-
+            Surrounded by the love and blessings of our families, we look forward to celebrating this beautiful occasion with everyone who is dear to us.
         </p>
-
-
+        
         <div class="family-grid">
-
             <div class="family-card">
-
-                <h3>
-                    Sandeep
-                </h3>
-
-                <p>
-                    Together with his<br>
-                    family and loved ones
-                </p>
-
+                <h3>Sandeep</h3>
+                <p>Together with his<br>family and loved ones</p>
             </div>
-
-
             <div class="family-card">
-
-                <h3>
-                    Pradeepa
-                </h3>
-
-                <p>
-                    Together with her<br>
-                    family and loved ones
-                </p>
-
+                <h3>Pradeepa</h3>
+                <p>Together with her<br>family and loved ones</p>
             </div>
-
         </div>
-
     </div>
-
-
-    <div class="tap-hint">
-        Tap anywhere to continue
-    </div>
-
+    <div class="tap-hint">Tap anywhere to continue</div>
 </section>
 
-
-
-<!-- =====================================================
-     PAGE 5
-===================================================== -->
-
+<!-- PAGE 5 -->
 <section class="page">
-
     <div class="page-content">
-
-        <div class="eyebrow">
-            With love and blessings
-        </div>
-
-
-        <h2 class="page-heading">
-            A beautiful<br>
-            beginning
-        </h2>
-
-
-        <div class="emblem">
-            <span></span>
-        </div>
-
-
+        <div class="eyebrow">With love and blessings</div>
+        <h2 class="page-heading">A beautiful<br>beginning</h2>
+        <div class="emblem"><span></span></div>
         <p class="body-text">
-
-            May this new chapter be filled with
-            love, laughter, understanding and
-            countless beautiful memories.
-
-            <br><br>
-
-            We would be honoured to have you
-            celebrate this special evening with us.
-
+            May this new chapter be filled with love, laughter, understanding and countless beautiful memories.<br><br>
+            We would be honoured to have you celebrate this special evening with us.
         </p>
-
     </div>
-
-
-    <div class="tap-hint">
-        Tap anywhere to continue
-    </div>
-
+    <div class="tap-hint">Tap anywhere to continue</div>
 </section>
 
-
-
-<!-- =====================================================
-     PAGE 6 — FINAL PAGE
-===================================================== -->
-
+<!-- PAGE 6 (FINAL PAGE) -->
 <section class="page final-page">
-
     <div class="page-content">
-
-
-        <!-- =========================================
-             LORD MURUGAN IMAGE
-
-             Place murugar.png in the same folder
-             as index.html.
-        ========================================== -->
-
+        
+        <!-- FANCY TEMPLE ARCH FRAME FOR LORD MURUGAN -->
         <div class="murugan-frame">
-
-            <img
-                src="murugar.png"
-                alt="Lord Murugan"
-            >
-
+            <img src="murugar.png" alt="Lord Murugan">
         </div>
 
-
-        <div class="eyebrow">
-            We look forward to seeing you
-        </div>
-
-
-        <h2 class="page-heading">
-            Join us
-        </h2>
-
-
+        <div class="eyebrow">We look forward to seeing you</div>
+        <h2 class="page-heading">Join us</h2>
+        
         <div class="reception-card">
-
-            <h3>
-                Shree MS Mahal
-            </h3>
-
-
-            <div class="time">
-                Reception · From 5:00 PM
-            </div>
-
-
+            <h3>Shree MS Mahal</h3>
+            <div class="time">Reception · From 5:00 PM</div>
             <div class="address">
-
                 Tuesday, November 17, 2026<br><br>
-
                 Karumathampatti – Annur Road<br>
                 Kittampalayam<br>
                 Tamil Nadu
-
             </div>
-
-
-            <!-- GOOGLE MAPS -->
-
-            <a
-                class="map-link"
-                href="https://maps.app.goo.gl/pPTStF38WmTZeoaB6"
-                target="_blank"
-                rel="noopener noreferrer"
-                onclick="event.stopPropagation();"
-            >
+            
+            <a class="map-link" href="https://maps.app.goo.gl/pPTStF38WmTZeoaB6" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
                 📍 View Location
             </a>
-
         </div>
-
-
-        <div class="emblem">
-            <span></span>
-        </div>
-
-
+        
+        <div class="emblem"><span></span></div>
         <p class="body-text">
-
             With love,<br><br>
-
-            <strong>
-                Sandeep & Pradeepa
-            </strong>
-
+            <strong>Sandeep & Pradeepa</strong>
         </p>
-
     </div>
-
-
-    <div class="tap-hint">
-        Tap anywhere to open
-    </div>
-
+    <div class="tap-hint">Tap anywhere to open</div>
 </section>
-
 
 </main>
 
-
-
-<!-- =====================================================
-     PAGE NUMBER
-
-     This is intentionally hidden at first.
-===================================================== -->
-
 <div class="page-number">
-
-    <span id="currentPage">1</span>
-    /
-    <span id="totalPages">6</span>
-
+    <span id="currentPage">1</span> / <span id="totalPages">6</span>
 </div>
 
-
-
 <script>
-
 /* =========================================================
    PAGE SYSTEM
 ========================================================= */
 
-
-const pages =
-    document.querySelectorAll(".page");
-
-
-const totalPages =
-    pages.length;
-
-
-/*
-   currentPage represents the number of pages
-   that have been opened.
-
-   Page 1 is already visible, so we start at 1.
-*/
-
+const pages = document.querySelectorAll(".page");
+const totalPages = pages.length;
 let currentPage = 1;
 
-
-/*
-   Set total number.
-*/
-
-document.getElementById("totalPages").textContent =
-    totalPages;
-
-
-/* =========================================================
-   UPDATE PAGE NUMBER
-========================================================= */
+document.getElementById("totalPages").textContent = totalPages;
 
 function updatePageNumber() {
-
-    document.getElementById("currentPage").textContent =
-        currentPage;
-
+    document.getElementById("currentPage").textContent = currentPage;
 }
-
-
-/* =========================================================
-   OPEN NEXT PAGE
-========================================================= */
 
 function openNextPage() {
-
-    /*
-       Once all pages are open, don't reveal
-       anything else.
-    */
-
-    if (currentPage >= totalPages) {
-
-        return;
-    }
-
-
-    /*
-       Move to next page.
-    */
-
-    currentPage++;
-
-
-    /*
-       Reveal the corresponding page.
-
-       Example:
-
-       currentPage = 2
-       pages[1] = Page 2
-    */
-
-    pages[currentPage - 1].classList.add("active");
-
-
-    /*
-       IMPORTANT:
-       Update the number immediately.
-
-       It remains hidden until all pages
-       are opened, but the value is always
-       correct.
-    */
-
-    updatePageNumber();
-
-
-    /*
-       If this was the final page,
-       unlock normal scrolling.
-    */
-
-    if (currentPage === totalPages) {
-
+    /* Advance through pages 1 to 6 one by one */
+    if (currentPage < totalPages) {
+        currentPage++;
+        pages[currentPage - 1].classList.add("active");
+        updatePageNumber();
+    } 
+    /* Once on Page 6, next click unlocks vertical scrolling */
+    else if (!document.body.classList.contains("all-open")) {
         openAllPages();
-
     }
-
 }
 
-
-/* =========================================================
-   OPEN ALL PAGES / ENABLE SCROLLING
-========================================================= */
-
 function openAllPages() {
-
-    /*
-       Mark invitation as fully opened.
-    */
-
     document.body.classList.add("all-open");
 
-
-    /*
-       Make absolutely sure every page is visible.
-    */
-
     pages.forEach(function(page) {
-
         page.classList.add("active");
-
     });
 
-
-    /*
-       The final page is now page 6.
-    */
-
     currentPage = totalPages;
-
     updatePageNumber();
-
-
-    /*
-       Start the normal scroll view
-       from the beginning.
-    */
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
 
+document.addEventListener("click", function(event) {
+    if (event.target.closest(".map-link")) return;
+    if (document.body.classList.contains("all-open")) return;
+    openNextPage();
+});
 
-/* =========================================================
-   CLICK ANYWHERE TO OPEN NEXT PAGE
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        /*
-           The Google Maps link must remain
-           a normal clickable link.
-
-           Do NOT advance the invitation when
-           someone clicks the map link.
-        */
-
-        if (
-            event.target.closest(".map-link")
-        ) {
-
-            return;
+document.addEventListener("keydown", function(event) {
+    if (
+        event.key === "ArrowRight" ||
+        event.key === " " ||
+        event.key === "Enter"
+    ) {
+        if (!document.body.classList.contains("all-open")) {
+            event.preventDefault();
+            openNextPage();
         }
-
-
-        /*
-           Once everything is open, normal
-           scrolling is enabled, so clicks
-           no longer change pages.
-        */
-
-        if (
-            document.body.classList.contains("all-open")
-        ) {
-
-            return;
-        }
-
-
-        openNextPage();
-
     }
-);
-
-
-/* =========================================================
-   KEYBOARD SUPPORT
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        /*
-           Space
-           Enter
-           Right Arrow
-           all open the next page.
-        */
-
-        if (
-            event.key === "ArrowRight" ||
-            event.key === " " ||
-            event.key === "Enter"
-        ) {
-
-            if (
-                !document.body.classList.contains("all-open")
-            ) {
-
-                event.preventDefault();
-
-                openNextPage();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
+});
 
 updatePageNumber();
-
 </script>
 
 </body>
